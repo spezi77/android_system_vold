@@ -24,6 +24,10 @@ ifneq ($(KERNEL_NTFS_MODULE_NAME),)
   common_cflags += -DNTFS_MODULE_NAME=\"$(KERNEL_NTFS_MODULE_NAME)\"
 endif
 
+ifneq ($(TARGET_EXTERNAL_APPS),)
+common_cflags += -DEXTERNAL_APPS_DEVICE_LABEL=\"$(TARGET_EXTERNAL_APPS)\"
+endif
+
 common_cflags += -Werror
 
 common_src_files := \
