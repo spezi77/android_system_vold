@@ -28,6 +28,10 @@ ifneq ($(TARGET_EXTERNAL_APPS),)
 common_cflags += -DEXTERNAL_APPS_DEVICE_LABEL=\"$(TARGET_EXTERNAL_APPS)\"
 endif
 
+ifeq ($(BOARD_VOLD_CRYPTFS_MIGRATE), true)
+common_cflags += -DCRYPTFS_MIGRATE
+endif
+
 common_cflags += -Werror
 
 common_src_files := \
@@ -112,7 +116,6 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= vdc.c
 LOCAL_MODULE:= vdc
 LOCAL_C_INCLUDES := $(KERNEL_HEADERS)
-LOCAL_CFLAGS := 
 LOCAL_SHARED_LIBRARIES := libcutils
 include $(BUILD_EXECUTABLE)
 
